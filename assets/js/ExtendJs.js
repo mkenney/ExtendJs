@@ -1,6 +1,6 @@
 /*!
- * ExtendJs v0.0.1 (https://github.com/mkenney/ExtendJs)
- * Copyright 2015-2015 Michael Kenney
+ * ExtendJs v0.0.3 (https://github.com/mkenney/ExtendJs)
+ * Copyright 2014-2015 Michael Kenney
  * Licensed under MIT (https://github.com/mkenney/ExtendJs/blob/master/LICENSE)
  */
 
@@ -487,7 +487,7 @@
 			};
 
 			/**
-			 * Extend date with a localize() method
+			 * Extend date with a format method
 			 *
 			 * Accepts a PHP date() compatible date format string
 			 *

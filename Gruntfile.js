@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 		  pkg: grunt.file.readJSON('package.json')
 		, banner: '/*!\n'
 			+ ' * ExtendJs v<%= pkg.version %> (<%= pkg.homepage %>)\n'
-			+ ' * Copyright 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n'
+			+ ' * Copyright 2014-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n'
 			+ ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n'
 			+ ' */\n'
 
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 			}
 			, grunt: {
 				options: {
-					jshintrc: 'grunt/.jshintrc'
+					jshintrc: '.jshintrc'
 				}
 				, src: ['Gruntfile.js', 'grunt/*.js']
 			}
@@ -57,12 +57,12 @@ module.exports = function (grunt) {
 
 		, concat: {
 			options: {
-				banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
-				stripBanners: false
+				  banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>'
+				, stripBanners: false
 			}
 			, bootstrap: {
 				src: [
-					'src/js/Object.js'
+					  'src/js/Object.js'
 					, 'src/js/Array.js'
 					, 'src/js/Date.js'
 					, 'src/js/Ip.js'
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
 
 		, uglify: {
 			options: {
-				preserveComments: 'some'
+				  preserveComments: 'some'
 				, sourceMap: true
 				, sourceMapName: 'assets/js/<%= pkg.name %>.map'
 				, compress: {
@@ -83,59 +83,29 @@ module.exports = function (grunt) {
 				}
 			}
 			, core: {
-				src: '<%= concat.bootstrap.dest %>',
-				dest: 'assets/js/<%= pkg.name %>.min.js'
-			}
-		}
-
-		, copy: {
-			docs: {
-				src: 'assets/*/*'
-				, dest: 'docs/'
+				  src: '<%= concat.bootstrap.dest %>'
+				, dest: 'assets/js/<%= pkg.name %>.min.js'
 			}
 		}
 
 		, watch: {
 			src: {
-				files: '<%= jshint.core.src %>'
-				, tasks: ['concat']
+				  files: 'src/js/*.js'
+				, tasks: ['concat', 'uglify']
 			}
 		}
-
-		, exec: {
-			npmUpdate: {
-				command: 'npm update'
-			}
-		}
-
-		, compress: {
-			main: {
-				options: {
-					archive: 'bootstrap-<%= pkg.version %>-dist.zip'
-					, mode: 'zip'
-					, level: 9
-					, pretty: true
-				},
-				files: [
-					{
-						expand: true
-						, cwd: 'assets/'
-						, src: ['**']
-						, dest: 'bootstrap-<%= pkg.version %>-dist'
-					}
-				]
-			}
-		}
-
 	});
 
-
-	// These plugins provide necessary tasks.
-	require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
-	require('time-grunt')(grunt);
+	// Load dependencies
+	require('load-grunt-tasks')(
+		  grunt
+		, {
+			scope: 'devDependencies'
+		}
+	);
 
 	// Lint and code style checks
-	grunt.registerTask('lint', ['jshint', 'jscs']);
+	grunt.registerTask('lint', ['jshint:grunt', 'jscs:grunt', 'jshint:core', 'jscs:core']);
 
 	// Full distribution task.
 	grunt.registerTask('dist', ['lint', 'clean', 'concat', 'uglify']);

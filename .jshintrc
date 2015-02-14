@@ -5,7 +5,10 @@
 	, "eqnull"   : true
 	, "es3"      : true
 	, "expr"     : true
-	, "jquery"   : true
+	, "globals"  : {
+		  "module":  true
+		, "require": true
+	}
 	, "latedef"  : true
 	, "laxbreak" : true
 	, "laxcomma" : true

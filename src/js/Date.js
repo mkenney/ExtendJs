@@ -259,7 +259,7 @@
 			};
 
 			/**
-			 * Extend date with a localize() method
+			 * Extend date with a format method
 			 *
 			 * Accepts a PHP date() compatible date format string
 			 *
