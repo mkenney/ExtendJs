@@ -188,7 +188,7 @@ Ip.prototype.toLong()
 /**
  * Convert an IP address to a signed int
  */
-global.Ip.prototype.toSignedLong()
+Ip.prototype.toSignedLong()
 ```
 
 ## Contributing
