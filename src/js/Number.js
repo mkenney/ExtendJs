@@ -6,7 +6,7 @@
  * Licensed under MIT (https://github.com/mkenney/ExtendJs/blob/master/LICENSE)
  */
 
-(function(undefined) {
++function(undefined) {
 	'use strict';
 
 	/**
@@ -35,16 +35,6 @@
 	};
 
 	/**
-	 * Alias of long2ip()
-	 *
-	 * @param  {Number} ip_long Signed long IP address value
-	 * @return {String}         IPv4 address
-	 */
-	Number.prototype.toIp = function() {
-		return this.long2ip();
-	};
-
-	/**
 	 * Simple PHP style number formatting
 	 *
 	 * Does not round
@@ -63,7 +53,7 @@
 		var string_this = String(this);
 		var x = string_this.split('.');
 		var formatted_number = x[0];
-		var remainder = x.length > 1 ? x[1] : "0";
+		var remainder = x.length > 1 ? x[1] : '0';
 		var regex = /(\d+)(\d{3})/;
 
 		while (regex.test(formatted_number)) {
@@ -83,4 +73,4 @@
 
 		return formatted_number;
 	};
-})();
+}();

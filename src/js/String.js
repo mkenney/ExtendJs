@@ -6,7 +6,7 @@
  * Licensed under MIT (https://github.com/mkenney/ExtendJs/blob/master/LICENSE)
  */
 
-(function(undefined) {
++function(undefined) {
 	'use strict';
 
 	if (undefined === String.prototype.br2nl) {
@@ -17,9 +17,9 @@
 		 */
 		String.prototype.br2nl = function() {
 			return this
-				.replace(/<br \/>/ig, "\n")
-				.replace(/<br\/>/ig, "\n")
-				.replace(/<br>/ig, "\n");
+				.replace(/<br \/>/ig, '\n')
+				.replace(/<br\/>/ig, '\n')
+				.replace(/<br>/ig, '\n');
 		};
 	}
 
@@ -93,4 +93,4 @@
 			return this.replace(/^\s+/, '').replace(/\s+$/, '');
 		};
 	}
-})();
+}();

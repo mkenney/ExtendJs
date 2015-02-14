@@ -9,93 +9,137 @@
 module.exports = function (grunt) {
 	'use strict';
 
-	// Force Unix line endings
+	// Force use of Unix newlines
 	grunt.util.linefeed = '\n';
 
+	// Project configuration.
 	grunt.initConfig({
 
-		// Metadata.
-		pkg: grunt.file.readJSON('package.json')
+		// Metadata
+		  pkg: grunt.file.readJSON('package.json')
+		, banner: '/*!\n'
+			+ ' * ExtendJs v<%= pkg.version %> (<%= pkg.homepage %>)\n'
+			+ ' * Copyright 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n'
+			+ ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n'
+			+ ' */\n'
 
-		// Concat files together
-		, concat: {
-			options: {
-					banner: '<%= banner %>'
-				, stripBanners: false
-			}
-			, js: {
-				src: [
-					  'src/Array.js'
-					, 'src/Date.js'
-					, 'src/Ip.js'
-					, 'src/Number.js'
-					, 'src/String.js'
-				]
-				, dest: 'dist/js/<%= pkg.name %>.js'
-			}
+		// Task configuration
+		, clean: {
+			dist: 'assets'
 		}
 
-		// Lint all javascript
 		, jshint: {
 			options: {
-				jshintrc: 'jshint.json'
+				jshintrc: 'src/js/.jshintrc'
 			}
 			, grunt: {
 				options: {
-					jshintrc: 'jshint.json'
+					jshintrc: 'grunt/.jshintrc'
 				}
-				, src: ['Gruntfile.js']
+				, src: ['Gruntfile.js', 'grunt/*.js']
 			}
-			, src: {
-				src: 'src/*.js'
+			, core: {
+				src: 'src/js/*.js'
 			}
 		}
 
-		// Minify all javascript
+		, jscs: {
+			options: {
+				config: 'src/js/.jscsrc'
+			}
+			, grunt: {
+				src: ['Gruntfile.js', 'grunt/*.js']
+			}
+			, core: {
+				src: 'src/js/*.js'
+			}
+		}
+
+		, concat: {
+			options: {
+				banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
+				stripBanners: false
+			}
+			, bootstrap: {
+				src: [
+					'src/js/Object.js'
+					, 'src/js/Array.js'
+					, 'src/js/Date.js'
+					, 'src/js/Ip.js'
+					, 'src/js/Number.js'
+					, 'src/js/String.js'
+				]
+				, dest: 'assets/js/<%= pkg.name %>.js'
+			}
+		}
+
 		, uglify: {
 			options: {
-				  report: 'min'
-				, banner:
-					'/**\n'+
-					' * ExtendJs v<%= pkg.version %> (<%= pkg.homepage %>)\n'+
-					' *\n'+
-					' * Copyright 2014-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n'+
-					' *\n'+
-					' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n'+
-					' */\n'
+				preserveComments: 'some'
+				, sourceMap: true
+				, sourceMapName: 'assets/js/<%= pkg.name %>.map'
+				, compress: {
+					drop_console: true
+				}
 			}
-			, build: {
-				  src: '<%= concat.js.dest %>'
-				, dest: 'dist/js/<%= pkg.name %>.min.js'
+			, core: {
+				src: '<%= concat.bootstrap.dest %>',
+				dest: 'assets/js/<%= pkg.name %>.min.js'
 			}
 		}
 
-
-		// Task configuration.
-		, clean: {
-			js: {
-				src: ['dist/js/*.js']
+		, copy: {
+			docs: {
+				src: 'assets/*/*'
+				, dest: 'docs/'
 			}
 		}
+
+		, watch: {
+			src: {
+				files: '<%= jshint.core.src %>'
+				, tasks: ['concat']
+			}
+		}
+
+		, exec: {
+			npmUpdate: {
+				command: 'npm update'
+			}
+		}
+
+		, compress: {
+			main: {
+				options: {
+					archive: 'bootstrap-<%= pkg.version %>-dist.zip'
+					, mode: 'zip'
+					, level: 9
+					, pretty: true
+				},
+				files: [
+					{
+						expand: true
+						, cwd: 'assets/'
+						, src: ['**']
+						, dest: 'bootstrap-<%= pkg.version %>-dist'
+					}
+				]
+			}
+		}
+
 	});
 
-	// Task plugins
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-nodeunit');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
 
-	// Full distribution
-	grunt.registerTask('default', [
-		  'clean'
-		, 'concat'
-		, 'jshint'
-		, 'uglify'
-	]);
+	// These plugins provide necessary tasks.
+	require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
+	require('time-grunt')(grunt);
 
-	// Lint the code
-	grunt.registerTask('lint', [
-		'jshint'
-	]);
+	// Lint and code style checks
+	grunt.registerTask('lint', ['jshint', 'jscs']);
+
+	// Full distribution task.
+	grunt.registerTask('dist', ['lint', 'clean', 'concat', 'uglify']);
+
+	// Default task.
+	grunt.registerTask('default', ['dist']);
 };

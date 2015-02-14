@@ -1,13 +1,9 @@
 {
-	  "laxcomma":  true
+	  "laxcomma":  false
 	, "asi":       false
 	, "camelcase": false
 	, "curly":     true
 	, "eqeqeq":    true
-	, "globals": {
-		  "document": true
-		, "window":   true
-	}
 	, "immed":     true
 	, "newcap":    true
 	, "noarg":     true

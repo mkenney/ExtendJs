@@ -6,7 +6,7 @@
  * Licensed under MIT (https://github.com/mkenney/ExtendJs/blob/master/LICENSE)
  */
 
-(function(undefined) {
++function(undefined) {
 	'use strict';
 
 	if (!Array.prototype.indexOf) {
@@ -29,4 +29,4 @@
 			return -1;
 		};
 	}
-})();
+}();
