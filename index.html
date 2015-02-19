@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Extendjs by mkenney</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Extendjs</h1>
+          <h2>Javascript functionality I think is missing and I&#39;m tired of re-creating over and over.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/mkenney/ExtendJs/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/mkenney/ExtendJs/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/mkenney/ExtendJs" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="extendjs" class="anchor" href="#extendjs" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/mkenney/ExtendJs">ExtendJs</a>
+</h1>
+
+<p>Javascript functionality I think is missing and I'm tired of re-creating over and
+over.</p>
+
+<p>I'm totally polluting the prototypes of built in classes. I don't feel bad about
+it. Nothing in this library will interfere with other libraries or break <code>for .. in</code>
+loops or change any existing method behaviors or conflict with any future versions
+of javascript or anything else. If I miss something that does, let me know and
+I'll fix it immediately.</p>
+
+<h2>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of contents</h2>
+
+<ul>
+<li><a href="#quick-start">Quick start</a></li>
+<li><a href="#bugs-and-feature-requests">Bugs and feature requests</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#versioning">Versioning</a></li>
+<li><a href="#creator">Creator</a></li>
+<li><a href="#copyright-and-license">Copyright and license</a></li>
+</ul>
+
+<h2>
+<a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick start</h2>
+
+<ul>
+<li>Clone the repo: <code>git clone https://github.com/mkenney/ExtendJs.git</code>.</li>
+</ul>
+
+<h3>
+<a id="whats-included" class="anchor" href="#whats-included" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's included</h3>
+
+<p>Within the repository you'll find the following directories and files, something
+like this:</p>
+
+<pre><code>ExtendJs/
+    ├── src/
+    │    └──js/
+    │        ├── Array.js
+    │        ├── Date.js
+    │        ├── Number.js
+    │        ├── Object.js
+    │        └── String.js
+    └── assets/
+         └──js/
+             ├── ExtendJs.js
+             ├── ExtendJs.map
+             └── ExtendJs.min.js
+</code></pre>
+
+<p>The compiled file (<code>ExtendJs.js</code>) and <a href="https://developers.google.com/chrome-developer-tools/docs/css-preprocessors">source map</a>
+(<code>ExtendJs.map</code>) are located in the assets/ directory and are available for use
+with certain browsers' developer tools.</p>
+
+<h2>
+<a id="bugs-and-feature-requests" class="anchor" href="#bugs-and-feature-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bugs and feature requests</h2>
+
+<p>If you find a bug or have a feature request <a href="#contributing">please open a new issue</a>.</p>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p>ExtendJs both extends native Javascript objects like Array and Date, and creates
+new global objects you can use however you like.  Here are the objects, properties
+and methods managed by this code.</p>
+
+<p>Javascript Native Objects</p>
+
+<pre><code>/**
+ * A read-only boolean flag has been added to all objects and variables noting
+ * that ExtendJs is installed.  Always true if the library has been loaded.
+ */
+Object.prototype.__ExtendJs__
+
+/**
+ * A read-only text value has been added to all objects and variables describing
+ * the object type because type checking in Javascript is so difficult:
+ *
+ *     var test = 1;
+ *     test.__type__          === "Number"
+ *     Number(1).__type__     === "Number"
+ *     new Number(1).__type__ === "Number"
+ *     Number.__type__        === "Function"
+ *     NaN.__type__           === "NaN"
+ */
+Object.prototype.__type__
+
+/**
+ * Extend objects ala jQuery.extend() and return the resulting object
+ */
+Object.extend( [deep], target, object1[, objectN])
+
+/**
+ * Add the indexOf array method to IE 8 and 9
+ */
+Array.prototype.indexOf()
+
+/**
+ * Extend Date with a day of year method
+ */
+Date.prototype.getDayOfYear()
+
+/**
+ * Extend Date with a number of days in the current month method
+ */
+Date.prototype.getDaysInMonth()
+
+/**
+ * Extend Date with a week of year method
+ */
+Date.prototype.getWeekOfYear()
+
+/**
+ * Extend Date with an isDst (is daylight savings time) method
+ */
+Date.prototype.isDst()
+
+/**
+ * Extend Date with an isLeapYear method
+ */
+Date.prototype.isLeapYear()
+
+/**
+ * Extend date with a format method
+ *
+ * Accepts a PHP date() compatible date format string
+ */
+Date.prototype.format(format_string)
+
+/**
+ * Allow localization of date format strings
+ */
+Date.prototype.localize(version, word, value)
+
+/**
+ * Convert a signed or unsigned int to an IP address
+ */
+Number.prototype.toIp()
+
+/**
+ * Simple PHP style number formatting
+ */
+Number.prototype.format(precision, decimal, separator)
+
+/**
+ * The reverse of nl2br
+ */
+String.prototype.br2nl()
+
+/**
+ * Ala http://php.net/htmlspecialchars
+ */
+String.prototype.htmlSpecialChars()
+
+/**
+ * Left-trim whitespace
+ */
+String.prototype.ltrim()
+
+/**
+ * Ala http://php.net/nl2br
+ */
+String.prototype.nl2br()
+
+/**
+ * Escape a string for use in a regular expression
+ */
+String.prototype.regexEscape()
+
+/**
+ * Right-trim whitespace
+ */
+String.prototype.rtrim()
+
+/**
+ * Trim whitespace
+ */
+String.prototype.trim()
+</code></pre>
+
+<p>Global IP class</p>
+
+<pre><code>/**
+ * Initialize this object
+ */
+new Ip(ipv4_string)
+
+/**
+ * Convert an IP address to an unsigned int
+ */
+Ip.prototype.toLong()
+
+/**
+ * Convert an IP address to a signed int
+ */
+Ip.prototype.toSignedLong()
+</code></pre>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<h3>
+<a id="using-the-issue-tracker" class="anchor" href="#using-the-issue-tracker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using the issue tracker</h3>
+
+<p>The <a href="https://github.com/mkenney/ExtendJs/issues">issue tracker</a> is the preferred
+channel for bug reports, features requests and submitting pull requests, but
+please respect the following restrictions:</p>
+
+<ul>
+<li><p>Please <strong>do not</strong> use the issue tracker for personal support requests.</p></li>
+<li><p>Please <strong>do not</strong> derail or troll issues. Keep the discussion on topic and
+respect the opinions of others.</p></li>
+</ul>
+
+<h4>
+<a id="bug-reports" class="anchor" href="#bug-reports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bug reports</h4>
+
+<p>A bug is a <em>demonstrable problem</em> that is caused by the code in the repository.
+Good bug reports are extremely helpful!</p>
+
+<p>Guidelines for bug reports:</p>
+
+<ol>
+<li><p><strong>Validate and lint your code</strong> — <a href="http://jshint.com/">lint your JS code</a>
+to ensure your problem isn't caused by an error in your own code.</p></li>
+<li><p><strong><a href="https://github.com/mkenney/ExtendJs/issues">Use the GitHub issue search</a></strong> — check if the issue has already been
+reported.</p></li>
+<li><p><strong>Check if the issue has been fixed</strong> — try to reproduce it using the
+latest <code>master</code> branch in the repository</p></li>
+<li><p><strong>Isolate the problem</strong> — ideally create a <a href="http://css-tricks.com/6263-reduced-test-cases/">reduced test
+case</a> and a <a href="http://jsfiddle.net/">live example</a>.</p></li>
+</ol>
+
+<p>Example:</p>
+
+<blockquote>
+<p>Short and descriptive example bug report title</p>
+
+<p>A summary of the issue and the browser/OS environment in which it occurs. If
+suitable, include the steps required to reproduce the bug.</p>
+
+<ol>
+<li>This is the first step</li>
+<li>This is the second step</li>
+<li>Further steps, etc.</li>
+</ol>
+
+<p><code>&lt;url&gt;</code> - a link to the reduced test case or live example</p>
+
+<p>Any other information you want to share that is relevant to the issue being
+reported. This might include the lines of code that you have identified as
+causing the bug, and potential solutions (and your opinions on their
+merits).</p>
+</blockquote>
+
+<h2>
+<a id="versioning" class="anchor" href="#versioning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Versioning</h2>
+
+<p>For transparency and in striving to maintain backward compatibility, ExtendJs is
+maintained under <a href="http://semver.org/">the Semantic Versioning guidelines</a>.  I'll
+adhere to those rules whenever possible.</p>
+
+<h2>
+<a id="creator" class="anchor" href="#creator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creator</h2>
+
+<p><strong>Michael Kenney</strong></p>
+
+<ul>
+<li><a href="https://github.com/mkenney">https://github.com/mkenney</a></li>
+<li><a href="https://www.linkedin.com/in/michaelkenney">https://www.linkedin.com/in/michaelkenney</a></li>
+</ul>
+
+<h2>
+<a id="copyright-and-license" class="anchor" href="#copyright-and-license" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copyright and license</h2>
+
+<p>Code and documentation copyright 2014-2015 Michael Kenney. Released under
+<a href="https://github.com/mkenney/ExtendJs/blob/master/LICENSE">the MIT license</a>.</p>
+        </section>
+
+        <footer>
+          Extendjs is maintained by <a href="https://github.com/mkenney">mkenney</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
