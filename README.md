@@ -60,7 +60,7 @@ new global objects you can use however you like.  Here are the objects, properti
 and methods managed by this code.
 
 Javascript Native Objects
-```
+```javascript
 /**
  * A read-only boolean flag has been added to all objects and variables noting
  * that ExtendJs is installed.  Always true if the library has been loaded.
@@ -174,7 +174,7 @@ String.prototype.trim()
 ```
 
 Global IP class
-```
+```javascript
 /**
  * Initialize this object
  */
@@ -189,6 +189,178 @@ Ip.prototype.toLong()
  * Convert an IP address to a signed int
  */
 Ip.prototype.toSignedLong()
+```
+
+## Examples
+
+### Object.extend()
+
+```javascript
+var object1 = {
+  apple: 0,
+  banana: { weight: 52, price: 100 },
+  cherry: 97
+};
+var object2 = {
+  banana: { price: 200 },
+  durian: 100
+};
+
+// Merge object2 into object1
+Object.extend( object1, object2 );
+
+console.log(JSON.stringify( object1 ))
+
+// Output:
+// {"apple":0,"banana":{"price":200},"cherry":97,"durian":100}
+
+//----------------------------------------------------------------------------//
+
+var object1 = {
+  apple: 0,
+  banana: { weight: 52, price: 100 },
+  cherry: 97
+};
+var object2 = {
+  banana: { price: 200 },
+  durian: 100
+};
+
+// Merge object2 into object1, recursively
+$.extend( true, object1, object2 );
+console.log(JSON.stringify( object1 ))
+
+// Output:
+// {"apple":0,"banana":{"price":200},"cherry":97,"durian":100}
+
+//----------------------------------------------------------------------------//
+
+
+var defaults = { validate: false, limit: 5, name: "foo" };
+var options = { validate: true, name: "bar" };
+
+// Merge defaults and options, without modifying defaults
+var settings = Object.extend( {}, defaults, options );
+
+console.log(JSON.stringify( defaults ))
+console.log(JSON.stringify( options ))
+console.log(JSON.stringify( settings ))
+
+// Output:
+// {"validate":false,"limit":5,"name":"foo"}
+// {"validate":true,"name":"bar"}
+// {"validate":true,"limit":5,"name":"bar"}
+```
+
+### Object.__type__
+
+```javascript
+var obj = {};
+console.log(obj.__type__);
+// "Object"
+
+var obj = Object;
+console.log(obj.__type__);
+// "Function" - This is true of all functions
+
+var obj = Object();
+console.log(obj.__type__);
+// "Object"
+
+var obj = new Object();
+console.log(obj.__type__);
+// "Object"
+
+//----------------------------------------------------------------------------//
+
+var obj = [];
+console.log(obj.__type__);
+// "Array" - This is correct for all Array instances
+
+//----------------------------------------------------------------------------//
+
+var obj = 0;
+console.log(obj.__type__);
+// "Number" - This is correct for both primitive and Object instances
+
+//----------------------------------------------------------------------------//
+
+var obj = true;
+console.log(obj.__type__);
+// "Boolean" - This is correct for both primitive and Object instances
+
+//----------------------------------------------------------------------------//
+
+var obj = null;
+console.log(obj.__type__);
+// TypeError: Cannot read property '__type__' of null
+
+//----------------------------------------------------------------------------//
+
+var obj = NaN;
+console.log(obj.__type__);
+// "NaN"
+
+var obj = new Number('a');
+console.log(obj.__type__);
+// "NaN"
+
+var obj = 2 / 'a';
+console.log(obj.__type__);
+// "NaN"
+```
+
+### Number.format()
+
+```javascript
+var num = 22 / 7 * 10000;
+
+console.log(num.format());
+// "31,428"
+
+console.log(num.format(3));
+// "31,428.571"
+
+console.log(num.format(3, '+'));
+// "31,428+571"
+
+console.log(num.format(3, '+', '#'));
+// "31#428+571"
+```
+
+### Date
+
+```javascript
+var date = new Date('2016-02-29 15:45:30');
+
+//----------------------------------------------------------------------------//
+
+console.log(date);
+// "Thu Jan 01 2015 15:45:30 GMT-0700 (MST)"
+
+console.log(date.format('l M d, Y g:ia'));
+// "Jan 01, 2015 3:45pm"
+
+date.localize('full', 'Monday', 'Lunes')
+console.log(date.format('l M d, Y g:ia'));
+// "Lunes Feb 29, 2016 3:45pm"
+
+//----------------------------------------------------------------------------//
+
+console.log(date.getDayOfYear());
+// 60
+
+console.log(date.getDaysInMonth());
+// 29
+
+console.log(date.getWeekOfYear());
+// 9
+
+console.log(date.isDst());
+// false
+
+console.log(date.isLeapYear());
+// true
 ```
 
 ## Contributing
