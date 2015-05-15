@@ -194,7 +194,7 @@ Ip.prototype.toSignedLong()
 
 ## Examples
 
-### Object.__ExtendJs__
+### Object.\__ExtendJs__
 
 All data types are given an `__ExtendJs__` property with a value of `true` denoting
 that ExtendJs is installed:
@@ -204,7 +204,7 @@ console.log(false.__ExtendJs__);
 // true
 ```
 
-### Object.__type__
+### Object.\__type__
 
 ```javascript
 var obj = {};
