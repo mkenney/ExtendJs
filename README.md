@@ -374,6 +374,18 @@ console.log(date.isLeapYear());
 // true
 ```
 
+### Ip
+
+```javascript
+var ip = new Ip('200.200.200.200');
+
+console.log(ip.toLong());
+// 3368601800
+
+console.log(ip.toSignedLong());
+// -926365496
+```
+
 ## Contributing
 
 ### Using the issue tracker
