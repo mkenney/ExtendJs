@@ -340,7 +340,7 @@ console.log(date);
 // "Thu Jan 01 2015 15:45:30 GMT-0700 (MST)"
 
 console.log(date.format('l M d, Y g:ia'));
-// "Jan 01, 2015 3:45pm"
+// "Monday Jan 01, 2015 3:45pm"
 
 date.localize('full', 'Monday', 'Lunes')
 console.log(date.format('l M d, Y g:ia'));
