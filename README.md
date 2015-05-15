@@ -194,63 +194,14 @@ Ip.prototype.toSignedLong()
 
 ## Examples
 
-### Object.extend()
+### Object.__ExtendJs__
+
+All data types are given an `__ExtendJs__` property with a value of `true` denoting
+that ExtendJs is installed:
 
 ```javascript
-var object1 = {
-  apple: 0,
-  banana: { weight: 52, price: 100 },
-  cherry: 97
-};
-var object2 = {
-  banana: { price: 200 },
-  durian: 100
-};
-
-// Merge object2 into object1
-Object.extend( object1, object2 );
-
-console.log(JSON.stringify( object1 ))
-
-// Output:
-// {"apple":0,"banana":{"price":200},"cherry":97,"durian":100}
-
-//----------------------------------------------------------------------------//
-
-var object1 = {
-  apple: 0,
-  banana: { weight: 52, price: 100 },
-  cherry: 97
-};
-var object2 = {
-  banana: { price: 200 },
-  durian: 100
-};
-
-// Merge object2 into object1, recursively
-$.extend( true, object1, object2 );
-console.log(JSON.stringify( object1 ))
-
-// Output:
-// {"apple":0,"banana":{"price":200},"cherry":97,"durian":100}
-
-//----------------------------------------------------------------------------//
-
-
-var defaults = { validate: false, limit: 5, name: "foo" };
-var options = { validate: true, name: "bar" };
-
-// Merge defaults and options, without modifying defaults
-var settings = Object.extend( {}, defaults, options );
-
-console.log(JSON.stringify( defaults ))
-console.log(JSON.stringify( options ))
-console.log(JSON.stringify( settings ))
-
-// Output:
-// {"validate":false,"limit":5,"name":"foo"}
-// {"validate":true,"name":"bar"}
-// {"validate":true,"limit":5,"name":"bar"}
+console.log(false.__ExtendJs__);
+// true
 ```
 
 ### Object.__type__
@@ -309,6 +260,65 @@ console.log(obj.__type__);
 var obj = 2 / 'a';
 console.log(obj.__type__);
 // "NaN"
+```
+
+### Object.extend()
+
+```javascript
+var object1 = {
+  apple: 0,
+  banana: { weight: 52, price: 100 },
+  cherry: 97
+};
+var object2 = {
+  banana: { price: 200 },
+  durian: 100
+};
+
+// Merge object2 into object1
+Object.extend( object1, object2 );
+
+console.log(JSON.stringify( object1 ))
+
+// Output:
+// {"apple":0,"banana":{"price":200},"cherry":97,"durian":100}
+
+//----------------------------------------------------------------------------//
+
+var object1 = {
+  apple: 0,
+  banana: { weight: 52, price: 100 },
+  cherry: 97
+};
+var object2 = {
+  banana: { price: 200 },
+  durian: 100
+};
+
+// Merge object2 into object1, recursively
+$.extend( true, object1, object2 );
+console.log(JSON.stringify( object1 ))
+
+// Output:
+// {"apple":0,"banana":{"price":200},"cherry":97,"durian":100}
+
+//----------------------------------------------------------------------------//
+
+
+var defaults = { validate: false, limit: 5, name: "foo" };
+var options = { validate: true, name: "bar" };
+
+// Merge defaults and options, without modifying defaults
+var settings = Object.extend( {}, defaults, options );
+
+console.log(JSON.stringify( defaults ))
+console.log(JSON.stringify( options ))
+console.log(JSON.stringify( settings ))
+
+// Output:
+// {"validate":false,"limit":5,"name":"foo"}
+// {"validate":true,"name":"bar"}
+// {"validate":true,"limit":5,"name":"bar"}
 ```
 
 ### Number.format()
