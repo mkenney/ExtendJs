@@ -14,6 +14,7 @@ I'll fix it immediately.
 - [Quick start](#quick-start)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Documentation](#documentation)
+- [Examples](#examples)
 - [Contributing](#contributing)
 - [Versioning](#versioning)
 - [Creator](#creator)
