@@ -17,7 +17,8 @@ module.exports = function (grunt) {
 
 		// Metadata
 		  pkg: grunt.file.readJSON('package.json')
-		, banner: '/*!\n'
+		, banner:
+			  '/*!\n'
 			+ ' * ExtendJs v<%= pkg.version %> (<%= pkg.homepage %>)\n'
 			+ ' * Copyright 2014-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n'
 			+ ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n'
@@ -25,7 +26,7 @@ module.exports = function (grunt) {
 
 		// Task configuration
 		, clean: {
-			dist: 'assets'
+			dist: 'assets/js/<%= pkg.version %>'
 		}
 
 		, jshint: {
@@ -57,10 +58,11 @@ module.exports = function (grunt) {
 
 		, concat: {
 			options: {
-				  banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>'
+				  banner: '<%= banner %>'
 				, stripBanners: false
 			}
 			, bootstrap: {
+
 				src: [
 					  'src/js/Object.js'
 					, 'src/js/Array.js'
@@ -69,7 +71,7 @@ module.exports = function (grunt) {
 					, 'src/js/Number.js'
 					, 'src/js/String.js'
 				]
-				, dest: 'assets/js/<%= pkg.name %>.js'
+				, dest: 'assets/js/<%= pkg.version %>/<%= pkg.name %>.js'
 			}
 		}
 
@@ -77,14 +79,14 @@ module.exports = function (grunt) {
 			options: {
 				  preserveComments: 'some'
 				, sourceMap: true
-				, sourceMapName: 'assets/js/<%= pkg.name %>.map'
+				, sourceMapName: 'assets/js/<%= pkg.version %>/<%= pkg.name %>.map'
 				, compress: {
 					drop_console: true
 				}
 			}
 			, core: {
 				  src: '<%= concat.bootstrap.dest %>'
-				, dest: 'assets/js/<%= pkg.name %>.min.js'
+				, dest: 'assets/js/<%= pkg.version %>/<%= pkg.name %>.min.js'
 			}
 		}
 

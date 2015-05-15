@@ -3,8 +3,6 @@
  * Copyright 2014-2015 Michael Kenney
  * Licensed under MIT (https://github.com/mkenney/ExtendJs/blob/master/LICENSE)
  */
-
-
 /**
  * ExtendJs Object extensions v0.1.3 (https://github.com/mkenney/ExtendJs)
  *
