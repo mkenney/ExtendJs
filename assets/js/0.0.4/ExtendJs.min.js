@@ -1,5 +1,5 @@
 /*!
- * ExtendJs v0.0.3 (https://github.com/mkenney/ExtendJs)
+ * ExtendJs v0.0.4 (https://github.com/mkenney/ExtendJs)
  * Copyright 2014-2015 Michael Kenney
  * Licensed under MIT (https://github.com/mkenney/ExtendJs/blob/master/LICENSE)
  */

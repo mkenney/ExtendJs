@@ -1,7 +1,7 @@
 {
 	  "name": "ExtendJs"
 	, "description": "Javascript language extensions and useful classes"
-	, "version": "0.0.3"
+	, "version": "0.0.4"
 	, "keywords": [
 		  "ExtendJs"
 		, "js"
