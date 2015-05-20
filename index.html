@@ -1,37 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>Extendjs by mkenney</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Extendjs by mkenney</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1>Extendjs</h1>
+        <p>Javascript functionality I think is missing and I&#39;m tired of re-creating over and over.</p>
 
-        <header>
-          <h1>Extendjs</h1>
-          <h2>Javascript functionality I think is missing and I&#39;m tired of re-creating over and over.</h2>
-        </header>
+        <p class="view"><a href="https://github.com/mkenney/ExtendJs">View the Project on GitHub <small>mkenney/ExtendJs</small></a></p>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/mkenney/ExtendJs/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/mkenney/ExtendJs/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/mkenney/ExtendJs" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
 
-        <hr>
-
-        <section id="main_content">
-          <h1>
+        <ul>
+          <li><a href="https://github.com/mkenney/ExtendJs/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/mkenney/ExtendJs/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/mkenney/ExtendJs">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
 <a id="extendjs" class="anchor" href="#extendjs" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/mkenney/ExtendJs">ExtendJs</a>
 </h1>
 
@@ -51,6 +48,7 @@ I'll fix it immediately.</p>
 <li><a href="#quick-start">Quick start</a></li>
 <li><a href="#bugs-and-feature-requests">Bugs and feature requests</a></li>
 <li><a href="#documentation">Documentation</a></li>
+<li><a href="#examples">Examples</a></li>
 <li><a href="#contributing">Contributing</a></li>
 <li><a href="#versioning">Versioning</a></li>
 <li><a href="#creator">Creator</a></li>
@@ -103,135 +101,322 @@ and methods managed by this code.</p>
 
 <p>Javascript Native Objects</p>
 
-<pre><code>/**
- * A read-only boolean flag has been added to all objects and variables noting
- * that ExtendJs is installed.  Always true if the library has been loaded.
- */
-Object.prototype.__ExtendJs__
+<div class="highlight highlight-javascript"><pre><span class="pl-c">/**</span>
+<span class="pl-c"> * A read-only boolean flag has been added to all objects and variables noting</span>
+<span class="pl-c"> * that ExtendJs is installed.  Always true if the library has been loaded.</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Object</span>.<span class="pl-c1">prototype</span>.__ExtendJs__
 
-/**
- * A read-only text value has been added to all objects and variables describing
- * the object type because type checking in Javascript is so difficult:
- *
- *     var test = 1;
- *     test.__type__          === "Number"
- *     Number(1).__type__     === "Number"
- *     new Number(1).__type__ === "Number"
- *     Number.__type__        === "Function"
- *     NaN.__type__           === "NaN"
- */
-Object.prototype.__type__
+<span class="pl-c">/**</span>
+<span class="pl-c"> * A read-only text value has been added to all objects and variables describing</span>
+<span class="pl-c"> * the object type because type checking in Javascript is so difficult:</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *     var test = 1;</span>
+<span class="pl-c"> *     test.__type__          === "Number"</span>
+<span class="pl-c"> *     Number(1).__type__     === "Number"</span>
+<span class="pl-c"> *     new Number(1).__type__ === "Number"</span>
+<span class="pl-c"> *     Number.__type__        === "Function"</span>
+<span class="pl-c"> *     NaN.__type__           === "NaN"</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Object</span>.<span class="pl-c1">prototype</span>.__type__
 
-/**
- * Extend objects ala jQuery.extend() and return the resulting object
- */
-Object.extend( [deep], target, object1[, objectN])
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Extend objects ala jQuery.extend() and return the resulting object</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Object</span>.extend( [deep], target, object1[, objectN])
 
-/**
- * Add the indexOf array method to IE 8 and 9
- */
-Array.prototype.indexOf()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Add the indexOf array method to IE 8 and 9</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Array</span>.<span class="pl-c1">prototype</span>.<span class="pl-c1">indexOf</span>()
 
-/**
- * Extend Date with a day of year method
- */
-Date.prototype.getDayOfYear()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Extend Date with a day of year method</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Date</span>.<span class="pl-c1">prototype</span>.getDayOfYear()
 
-/**
- * Extend Date with a number of days in the current month method
- */
-Date.prototype.getDaysInMonth()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Extend Date with a number of days in the current month method</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Date</span>.<span class="pl-c1">prototype</span>.getDaysInMonth()
 
-/**
- * Extend Date with a week of year method
- */
-Date.prototype.getWeekOfYear()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Extend Date with a week of year method</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Date</span>.<span class="pl-c1">prototype</span>.getWeekOfYear()
 
-/**
- * Extend Date with an isDst (is daylight savings time) method
- */
-Date.prototype.isDst()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Extend Date with an isDst (is daylight savings time) method</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Date</span>.<span class="pl-c1">prototype</span>.isDst()
 
-/**
- * Extend Date with an isLeapYear method
- */
-Date.prototype.isLeapYear()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Extend Date with an isLeapYear method</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Date</span>.<span class="pl-c1">prototype</span>.isLeapYear()
 
-/**
- * Extend date with a format method
- *
- * Accepts a PHP date() compatible date format string
- */
-Date.prototype.format(format_string)
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Extend date with a format method</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> * Accepts a PHP date() compatible date format string</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Date</span>.<span class="pl-c1">prototype</span>.format(format_string)
 
-/**
- * Allow localization of date format strings
- */
-Date.prototype.localize(version, word, value)
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Allow localization of date format strings</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Date</span>.<span class="pl-c1">prototype</span>.localize(version, word, value)
 
-/**
- * Convert a signed or unsigned int to an IP address
- */
-Number.prototype.toIp()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Convert a signed or unsigned int to an IP address</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Number</span>.<span class="pl-c1">prototype</span>.toIp()
 
-/**
- * Simple PHP style number formatting
- */
-Number.prototype.format(precision, decimal, separator)
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Simple PHP style number formatting</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">Number</span>.<span class="pl-c1">prototype</span>.format(precision, decimal, separator)
 
-/**
- * The reverse of nl2br
- */
-String.prototype.br2nl()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * The reverse of nl2br</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">String</span>.<span class="pl-c1">prototype</span>.br2nl()
 
-/**
- * Ala http://php.net/htmlspecialchars
- */
-String.prototype.htmlSpecialChars()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Ala http://php.net/htmlspecialchars</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">String</span>.<span class="pl-c1">prototype</span>.htmlSpecialChars()
 
-/**
- * Left-trim whitespace
- */
-String.prototype.ltrim()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Left-trim whitespace</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">String</span>.<span class="pl-c1">prototype</span>.ltrim()
 
-/**
- * Ala http://php.net/nl2br
- */
-String.prototype.nl2br()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Ala http://php.net/nl2br</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">String</span>.<span class="pl-c1">prototype</span>.nl2br()
 
-/**
- * Escape a string for use in a regular expression
- */
-String.prototype.regexEscape()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Escape a string for use in a regular expression</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">String</span>.<span class="pl-c1">prototype</span>.regexEscape()
 
-/**
- * Right-trim whitespace
- */
-String.prototype.rtrim()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Right-trim whitespace</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">String</span>.<span class="pl-c1">prototype</span>.rtrim()
 
-/**
- * Trim whitespace
- */
-String.prototype.trim()
-</code></pre>
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Trim whitespace</span>
+<span class="pl-c"> */</span>
+<span class="pl-c1">String</span>.<span class="pl-c1">prototype</span>.trim()</pre></div>
 
 <p>Global IP class</p>
 
-<pre><code>/**
- * Initialize this object
- */
-new Ip(ipv4_string)
+<div class="highlight highlight-javascript"><pre><span class="pl-c">/**</span>
+<span class="pl-c"> * Initialize this object</span>
+<span class="pl-c"> */</span>
+<span class="pl-k">new</span> <span class="pl-en">Ip</span>(ipv4_string)
 
-/**
- * Convert an IP address to an unsigned int
- */
-Ip.prototype.toLong()
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Convert an IP address to an unsigned int</span>
+<span class="pl-c"> */</span>
+Ip.<span class="pl-c1">prototype</span>.toLong()
 
-/**
- * Convert an IP address to a signed int
- */
-Ip.prototype.toSignedLong()
-</code></pre>
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Convert an IP address to a signed int</span>
+<span class="pl-c"> */</span>
+Ip.<span class="pl-c1">prototype</span>.toSignedLong()</pre></div>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<h3>
+<a id="object__extendjs__" class="anchor" href="#object__extendjs__" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.__ExtendJs__</h3>
+
+<p>All data types are given an <code>__ExtendJs__</code> property with a value of <code>true</code> denoting
+that ExtendJs is installed:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-c1">false</span>.__ExtendJs__);
+<span class="pl-c">// true</span></pre></div>
+
+<h3>
+<a id="object__type__" class="anchor" href="#object__type__" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.__type__</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> obj <span class="pl-k">=</span> {};
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "Object"</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-c1">Object</span>;
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "Function" - This is true of all functions</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-c1">Object</span>();
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "Object"</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Object</span>();
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "Object"</span>
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> [];
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "Array" - This is correct for all Array instances</span>
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-c1">0</span>;
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "Number" - This is correct for both primitive and Object instances</span>
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-c1">true</span>;
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "Boolean" - This is correct for both primitive and Object instances</span>
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-c1">null</span>;
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// TypeError: Cannot read property '__type__' of null</span>
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-c1">NaN</span>;
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "NaN"</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Number</span>(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "NaN"</span>
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span> <span class="pl-c1">2</span> / <span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>;
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.__type__);
+<span class="pl-c">// "NaN"</span></pre></div>
+
+<h3>
+<a id="objectextend" class="anchor" href="#objectextend" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object.extend()</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> object1 <span class="pl-k">=</span> {
+  apple<span class="pl-k">:</span> <span class="pl-c1">0</span>,
+  banana<span class="pl-k">:</span> { weight<span class="pl-k">:</span> <span class="pl-c1">52</span>, price<span class="pl-k">:</span> <span class="pl-c1">100</span> },
+  cherry<span class="pl-k">:</span> <span class="pl-c1">97</span>
+};
+<span class="pl-k">var</span> object2 <span class="pl-k">=</span> {
+  banana<span class="pl-k">:</span> { price<span class="pl-k">:</span> <span class="pl-c1">200</span> },
+  durian<span class="pl-k">:</span> <span class="pl-c1">100</span>
+};
+
+<span class="pl-c">// Merge object2 into object1</span>
+<span class="pl-c1">Object</span>.extend( object1, object2 );
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-c1">JSON</span>.stringify( object1 ))
+
+<span class="pl-c">// Output:</span>
+<span class="pl-c">// {"apple":0,"banana":{"price":200},"cherry":97,"durian":100}</span>
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+<span class="pl-k">var</span> object1 <span class="pl-k">=</span> {
+  apple<span class="pl-k">:</span> <span class="pl-c1">0</span>,
+  banana<span class="pl-k">:</span> { weight<span class="pl-k">:</span> <span class="pl-c1">52</span>, price<span class="pl-k">:</span> <span class="pl-c1">100</span> },
+  cherry<span class="pl-k">:</span> <span class="pl-c1">97</span>
+};
+<span class="pl-k">var</span> object2 <span class="pl-k">=</span> {
+  banana<span class="pl-k">:</span> { price<span class="pl-k">:</span> <span class="pl-c1">200</span> },
+  durian<span class="pl-k">:</span> <span class="pl-c1">100</span>
+};
+
+<span class="pl-c">// Merge object2 into object1, recursively</span>
+$.extend( <span class="pl-c1">true</span>, object1, object2 );
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-c1">JSON</span>.stringify( object1 ))
+
+<span class="pl-c">// Output:</span>
+<span class="pl-c">// {"apple":0,"banana":{"price":200},"cherry":97,"durian":100}</span>
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+
+<span class="pl-k">var</span> defaults <span class="pl-k">=</span> { validate<span class="pl-k">:</span> <span class="pl-c1">false</span>, limit<span class="pl-k">:</span> <span class="pl-c1">5</span>, name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span> };
+<span class="pl-k">var</span> options <span class="pl-k">=</span> { validate<span class="pl-k">:</span> <span class="pl-c1">true</span>, name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>bar<span class="pl-pds">"</span></span> };
+
+<span class="pl-c">// Merge defaults and options, without modifying defaults</span>
+<span class="pl-k">var</span> settings <span class="pl-k">=</span> <span class="pl-c1">Object</span>.extend( {}, defaults, options );
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-c1">JSON</span>.stringify( defaults ))
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-c1">JSON</span>.stringify( options ))
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-c1">JSON</span>.stringify( settings ))
+
+<span class="pl-c">// Output:</span>
+<span class="pl-c">// {"validate":false,"limit":5,"name":"foo"}</span>
+<span class="pl-c">// {"validate":true,"name":"bar"}</span>
+<span class="pl-c">// {"validate":true,"limit":5,"name":"bar"}</span></pre></div>
+
+<h3>
+<a id="numberformat" class="anchor" href="#numberformat" aria-hidden="true"><span class="octicon octicon-link"></span></a>Number.format()</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> num <span class="pl-k">=</span> <span class="pl-c1">22</span> / <span class="pl-c1">7</span> <span class="pl-k">*</span> <span class="pl-c1">10000</span>;
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(num.format());
+<span class="pl-c">// "31,428"</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(num.format(<span class="pl-c1">3</span>));
+<span class="pl-c">// "31,428.571"</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(num.format(<span class="pl-c1">3</span>, <span class="pl-s"><span class="pl-pds">'</span>+<span class="pl-pds">'</span></span>));
+<span class="pl-c">// "31,428+571"</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(num.format(<span class="pl-c1">3</span>, <span class="pl-s"><span class="pl-pds">'</span>+<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span>));
+<span class="pl-c">// "31#428+571"</span></pre></div>
+
+<h3>
+<a id="date" class="anchor" href="#date" aria-hidden="true"><span class="octicon octicon-link"></span></a>Date</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> date <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Date</span>(<span class="pl-s"><span class="pl-pds">'</span>2016-02-29 15:45:30<span class="pl-pds">'</span></span>);
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(date);
+<span class="pl-c">// "Thu Jan 01 2015 15:45:30 GMT-0700 (MST)"</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(date.format(<span class="pl-s"><span class="pl-pds">'</span>l M d, Y g:ia<span class="pl-pds">'</span></span>));
+<span class="pl-c">// "Monday Jan 01, 2015 3:45pm"</span>
+
+date.localize(<span class="pl-s"><span class="pl-pds">'</span>full<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Monday<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Lunes<span class="pl-pds">'</span></span>)
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(date.format(<span class="pl-s"><span class="pl-pds">'</span>l M d, Y g:ia<span class="pl-pds">'</span></span>));
+<span class="pl-c">// "Lunes Feb 29, 2016 3:45pm"</span>
+
+<span class="pl-c">//----------------------------------------------------------------------------//</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(date.getDayOfYear());
+<span class="pl-c">// 60</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(date.getDaysInMonth());
+<span class="pl-c">// 29</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(date.getWeekOfYear());
+<span class="pl-c">// 9</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(date.isDst());
+<span class="pl-c">// false</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(date.isLeapYear());
+<span class="pl-c">// true</span></pre></div>
+
+<h3>
+<a id="ip" class="anchor" href="#ip" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ip</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> ip <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Ip</span>(<span class="pl-s"><span class="pl-pds">'</span>200.200.200.200<span class="pl-pds">'</span></span>);
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(ip.toLong());
+<span class="pl-c">// 3368601800</span>
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(ip.toSignedLong());
+<span class="pl-c">// -926365496</span></pre></div>
 
 <h2>
 <a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
@@ -312,15 +497,13 @@ adhere to those rules whenever possible.</p>
 
 <p>Code and documentation copyright 2014-2015 Michael Kenney. Released under
 <a href="https://github.com/mkenney/ExtendJs/blob/master/LICENSE">the MIT license</a>.</p>
-        </section>
-
-        <footer>
-          Extendjs is maintained by <a href="https://github.com/mkenney">mkenney</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/mkenney">mkenney</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
