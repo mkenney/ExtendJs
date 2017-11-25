@@ -296,7 +296,7 @@ var object2 = {
 };
 
 // Merge object2 into object1, recursively
-$.extend( true, object1, object2 );
+Object.extend( true, object1, object2 );
 console.log(JSON.stringify( object1 ))
 
 // Output:
