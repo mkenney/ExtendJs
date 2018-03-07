@@ -1,0 +1,8 @@
+title: Extendjs
+description: Javascript functionality I think is missing and I'm tired of re-creating over and over.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
