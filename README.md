@@ -17,8 +17,7 @@ I'll fix it immediately.
 - [Examples](#examples)
 - [Contributing](#contributing)
 - [Versioning](#versioning)
-- [Creator](#creator)
-- [Copyright and license](#copyright-and-license)
+- [License](#license)
 
 ## Quick start
 
@@ -443,15 +442,6 @@ For transparency and in striving to maintain backward compatibility, ExtendJs is
 maintained under [the Semantic Versioning guidelines](http://semver.org/).  I'll
 adhere to those rules whenever possible.
 
-## Creator
+## License
 
-**Michael Kenney**
-
-- <https://github.com/mkenney>
-- <https://www.linkedin.com/in/michaelkenney>
-
-
-## Copyright and license
-
-Code and documentation copyright 2014-2015 Michael Kenney. Released under
-[the MIT license](https://github.com/mkenney/ExtendJs/blob/master/LICENSE).
+Released under the [the MIT license](https://github.com/mkenney/ExtendJs/blob/master/LICENSE).
